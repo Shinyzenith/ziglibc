@@ -180,18 +180,6 @@ pub fn build(b: *std.build.Builder) void {
         test_step.dependOn(&run_step.step);
     }
 
-    addLibcTest(b, target, optimize, libc_only_std_static, zig_start, libc_only_posix);
-    addTinyRegexCTests(b, target, optimize, libc_only_std_static, zig_start, libc_only_posix);
-    _ = addLua(b, target, optimize, libc_only_std_static, libc_only_posix, zig_start);
-    _ = addCmph(b, target, optimize, libc_only_std_static, zig_start, libc_only_posix);
-    _ = addYacc(b, target, optimize, libc_only_std_static, zig_start, libc_only_posix);
-    _ = addYabfc(b, target, optimize, libc_only_std_static, zig_start, libc_only_posix, libc_only_gnu);
-    _ = addSecretGame(b, target, optimize, libc_only_std_static, zig_start, libc_only_posix, libc_only_gnu);
-    _ = awkbuild.addAwk(b, target, optimize, libc_only_std_static, libc_only_posix, zig_start);
-    _ = gnumakebuild.addGnuMake(b, target, optimize, libc_only_std_static, libc_only_posix, zig_start);
-
-    _ = @import("busybox/build.zig").add(b, target, optimize, libc_only_std_static, libc_only_posix);
-    _ = @import("ncurses/build.zig").add(b, target, optimize, libc_only_std_static, libc_only_posix);
 }
 
 fn addPosix(artifact: *std.build.LibExeObjStep, zig_posix: *std.build.LibExeObjStep) void {
